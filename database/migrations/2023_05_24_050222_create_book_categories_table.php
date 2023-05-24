@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')-> references('id') -> on('categories');
             $table->foreignId('book_id')-> references('id') -> on('books');
+
+            
             $table->timestamps();
         });
     }

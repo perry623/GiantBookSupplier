@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+// Route::get('/', function () {
+//     return view('home',[
+//         'categories'=>['a','b','c'],
+//         'books'=>['a','b','c','d']]);
+// });
+
+Route::controller(BookController::class)->group(function () {
+        Route::get('/', 'showBooks')->name('home');
+        Route::get('/detail/{id}', 'showDetail')->name('detail');
 });

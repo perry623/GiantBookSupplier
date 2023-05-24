@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 
@@ -13,74 +14,36 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    private function getCategories(){
+        $categories = Category::all();
+        return $categories->toarray();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function showBooks()
     {
-        //
+        $books = Book::paginate(5);
+
+        $books->map(function ($item) {    
+            $item['namaPublisher'] = $item->publisher->name;
+            return $item;
+        });    
+
+        $categories = Category::all();
+        // dd($categories->toarray());
+        // dd($books->toarray());
+
+
+        
+        return view('home',[
+            'categories'=>$this::getCategories(),
+            'books' => $books]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBookRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreBookRequest $request)
+    public function showDetail($book_id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBookRequest  $request
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBookRequest $request, Book $book)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Book $book)
-    {
-        //
+        $book = Book::findOrFail($book_id);
+        // dd($book->toarray());
+        
+        return view('bookdetail',[
+            'categories'=>$this::getCategories(),
+            'book' => $book->toarray()]);
     }
 }

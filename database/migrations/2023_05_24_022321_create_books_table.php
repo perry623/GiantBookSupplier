@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('synopsis');           
+            $table->string('author');
+            $table->longText('synopsis');           
             $table->string('image');
 
             $table->foreignId('publisher_id')-> references('id') -> on('publishers');

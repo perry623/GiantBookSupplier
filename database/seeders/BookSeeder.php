@@ -30,13 +30,19 @@ class BookSeeder extends Seeder
         
         $PUBLISHER_COUNT = PublisherSeeder::$PUBLISHER_COUNT;
 
-        
+        $link_books =[
+            'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/yellow-business-leadership-book-cover-design-template-dce2f5568638ad4643ccb9e725e5d6ff.jpg?ts=1637017516',
+            'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1637008457',
+            'https://marketplace.canva.com/EAFKA0RgDtw/1/0/1003w/canva-brown-and-orange-elegant-simple-young-adult-fantasy-book-cover-Qb8uSVdJDzw.jpg',
+            'https://template.canva.com/EADaopxBna4/1/0/251w-ujD6UPGa9hw.jpg'
+        ];
         for($i=1; $i <=$this::$BOOK_COUNT; $i++){
             DB::table('books')->insert(
-                ['title'=> 'Kisah '.$faker->name,
-                'synopsis'=>$summary->realText($maxNbChars = 200, $indexSize = 2),
+                ['title'=> $summary->realText($maxNbChars = 20, $indexSize = 2),
+                'author'=> $faker->name,
+                'synopsis'=>$summary->realText($maxNbChars = 300, $indexSize = 2),
                 'publisher_id'=>  rand(1, $PUBLISHER_COUNT),
-                'image'=>'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1637008457']
+                'image'=>$link_books[rand(0,3)]]
             );
         }
     }

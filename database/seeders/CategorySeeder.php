@@ -17,11 +17,11 @@ class CategorySeeder extends Seeder
      * @return void
      */
 
-    public static $CATEGORY_COUNT = 45;
+    public static $CATEGORY_COUNT = 15;
     
     public function run()
     {
-        $categories = ["Romance","Thriller","Fantasy","Science Fiction","Mystery","Historical Fiction","Biography","Self-Help","Business","Cooking","Art","History","Travel","Young Adult","Science","Horror","Poetry","Memoir","Religion","Psychology","Dystopian","Adventure","Humor","Suspense","Graphic Novels","Classics","Literary Fiction","Crime","Philosophy","Parenting","Sports","Education","Health and Fitness","Technology","Environment","Music","Fashion","Sociology","Economics","Political Science","True Crime","Children's","Architecture","Gardening"];
+        $categories = ["Romance","Thriller","Fantasy","Science Fiction","Mystery","Historical Fiction","Biography","Self-Help","Business","Cooking","Art","History","Travel","Young Adult","Science"];
         
 
         
