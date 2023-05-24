@@ -40,6 +40,7 @@ class BookSeeder extends Seeder
             DB::table('books')->insert(
                 ['title'=> $summary->realText($maxNbChars = 20, $indexSize = 2),
                 'author'=> $faker->name,
+                'year'=> $faker->date('Y'),
                 'synopsis'=>$summary->realText($maxNbChars = 300, $indexSize = 2),
                 'publisher_id'=>  rand(1, $PUBLISHER_COUNT),
                 'image'=>$link_books[rand(0,3)]]

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('author');
             $table->longText('synopsis');           
             $table->string('image');
+            $table->string('year');
 
             $table->foreignId('publisher_id')-> references('id') -> on('publishers');
             $table->timestamps();

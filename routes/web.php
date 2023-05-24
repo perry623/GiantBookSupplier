@@ -14,13 +14,12 @@ use App\Http\Controllers\BookController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home',[
-//         'categories'=>['a','b','c'],
-//         'books'=>['a','b','c','d']]);
-// });
-
 Route::controller(BookController::class)->group(function () {
         Route::get('/', 'showBooks')->name('home');
+        Route::get('/category/{category}', 'showBooksCategory');
         Route::get('/detail/{id}', 'showDetail')->name('detail');
-});
+        Route::get('/publishers', 'showPublisher');
+        Route::get('/publisher/{id}', 'showPublisherDetails');
+        Route::get('/contact', 'contact');
+
+    });
