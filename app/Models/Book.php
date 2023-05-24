@@ -9,10 +9,11 @@ class Book extends Model
 {
     use HasFactory;
 
-    public function category(){
-        return $this->belongsTo(Category::class, 'category_id');
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'book_categories', 'book_id', 'category_id');
     }
-    
+        
     public function publisher(){
         return $this->belongsTo(Publisher::class, 'publisher_id');
     }
