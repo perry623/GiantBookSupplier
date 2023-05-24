@@ -36,6 +36,7 @@ class BookSeeder extends Seeder
             'https://marketplace.canva.com/EAFKA0RgDtw/1/0/1003w/canva-brown-and-orange-elegant-simple-young-adult-fantasy-book-cover-Qb8uSVdJDzw.jpg',
             'https://template.canva.com/EADaopxBna4/1/0/251w-ujD6UPGa9hw.jpg'
         ];
+        
         for($i=1; $i <=$this::$BOOK_COUNT; $i++){
             DB::table('books')->insert(
                 ['title'=> $summary->realText($maxNbChars = 20, $indexSize = 2),

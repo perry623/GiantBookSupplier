@@ -23,10 +23,19 @@ class BookCategorySeeder extends Seeder
 
         $CATEGORY_COUNT = CategorySeeder::$CATEGORY_COUNT;
         $BOOK_COUNT = BookSeeder::$BOOK_COUNT;
+
+
         for($i=1; $i <=$BOOK_COUNT; $i++){
+            $array =[];
             for($j=1; $j <=rand(1,4); $j++){
+                $random = rand(1, $CATEGORY_COUNT-1);
+                while (in_array($random, $array)) {
+                    $random = rand(1, $CATEGORY_COUNT-1);
+                }
+                array_push($array, $random);
+                
                 DB::table('book_categories')->insert(
-                    ['category_id'=>  rand(1, $CATEGORY_COUNT-1),
+                    ['category_id'=>  $random,
                     'book_id'=>$i]
                 );
 

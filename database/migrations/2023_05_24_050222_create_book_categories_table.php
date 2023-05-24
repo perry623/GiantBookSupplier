@@ -14,10 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('book_categories', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('category_id')-> references('id') -> on('categories');
             $table->foreignId('book_id')-> references('id') -> on('books');
-
+            $table->primary(['book_id', 'category_id']);
             
             $table->timestamps();
         });
