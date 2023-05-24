@@ -16,14 +16,18 @@ class PublisherSeeder extends Seeder
      *
      * @return void
      */
+
+
+    public static $PUBLISHER_COUNT = 5;
+
     public function run()
     {
         $faker = Faker::create('id_ID');
         $faker1 = Faker::create('en_ZA');
         
-        for($i=1; $i <=5; $i++){
+        for($i=1; $i <=$this::$PUBLISHER_COUNT; $i++){
             DB::table('publishers')->insert(
-                ['name'=> $faker->name,
+                ['name'=> $faker->company,
                 'phone'=>$faker1->mobileNumber,
                 'email'=> $faker ->email,
                 'address'=> $faker ->address]

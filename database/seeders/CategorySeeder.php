@@ -16,13 +16,16 @@ class CategorySeeder extends Seeder
      *
      * @return void
      */
+
+    public static $CATEGORY_COUNT = 10;
+
     public function run()
     {
         $faker = Faker::create('id_ID');
         
-        for($i=1; $i <=5; $i++){
+        for($i=1; $i <=$this::$CATEGORY_COUNT; $i++){
             DB::table('categories')->insert(
-                ['category'=> 'Buku Berwarna'.$faker->colorName]
+                ['category'=> 'Buku Berwarna '.$faker->colorName]
             );
         }
     }
