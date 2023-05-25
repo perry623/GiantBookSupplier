@@ -3,6 +3,10 @@
 @extends('./layout/headernav')
 
 @section('content')
+<div class="container d-flex flex-wrap justify-content-center py-3">
+    <h1>Publishers</h1>
+   
+</div>
 <div class="container-fluid d-flex flex-wrap justify-content-center flex-column flex-grow-1">
     <div class="container-fluid d-flex flex-wrap justify-content-center  py-4">
         @foreach ($publishers as $pub)
