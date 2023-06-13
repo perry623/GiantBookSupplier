@@ -38,6 +38,9 @@
                   <li class="nav-item">
                     <a class="nav-link" aria-   current="page" href="/contact">Contact</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-   current="page" href="/CRUD">Uploads</a>
+                  </li>
                 </ul>
               </div>
             </div>

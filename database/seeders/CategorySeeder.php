@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category as ModelCategory;
 use Faker\Factory as Faker;
+
+
 use Illuminate\Database\Seeder;
-
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -26,7 +27,7 @@ class CategorySeeder extends Seeder
 
         
         for($i=1; $i <$this::$CATEGORY_COUNT; $i++){
-            DB::table('categories')->insert(
+            ModelCategory::create(
                 ['category'=> $categories[$i-1]]
             );
         }

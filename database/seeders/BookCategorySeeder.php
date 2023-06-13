@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\BookCategory;
 use Illuminate\Database\Seeder;
 
-use Database\Seeders\CategorySeeder;
 use Database\Seeders\BookSeeder;
 use Illuminate\Support\Facades\DB;
+use Database\Seeders\CategorySeeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 
 
@@ -34,7 +35,7 @@ class BookCategorySeeder extends Seeder
                 }
                 array_push($array, $random);
                 
-                DB::table('book_categories')->insert(
+                BookCategory::create(
                     ['category_id'=>  $random,
                     'book_id'=>$i]
                 );

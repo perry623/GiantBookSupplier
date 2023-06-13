@@ -25,9 +25,9 @@
         </div>
         @endforeach
     </div>
-    <div class="pagination py-4 justify-content-center">
-        {{ $books->links('pagination::bootstrap-4') }}
-    </div>
+</div>
+<div class="pagination py-4 justify-content-center">
+    {{ $books->links('pagination::bootstrap-4') }}
 </div>
     
 @endsection

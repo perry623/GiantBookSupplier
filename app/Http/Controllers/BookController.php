@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 use App\Models\Book;
 use App\Models\Category;
@@ -20,6 +21,21 @@ class BookController extends Controller
         return $categories->toarray();
     }
 
+    public function CRUD_pro(Request $requests){
+        dd($requests);
+
+        $rules = [
+            'email' => 'required',
+            'password' => 'required',
+        ];
+        return view('contact', ['categories'=>$this::getCategories()]);
+
+    }
+    public function CRUD_view(){
+        return view('upload', ['categories'=>$this::getCategories()]);
+
+    }
+
     public function showBooks(){
         $books = Book::paginate(5);
 
@@ -37,9 +53,13 @@ class BookController extends Controller
     }
 
     public function showBooksCategory($category_id){
-        $books = Book::whereHas('categories', function ($query) use ($category_id) {
-            $query->where('category_id', $category_id);
-        })->with('categories')->paginate(5);
+        // $books = Book::whereHas('categories', function ($query) use ($category_id) {
+        //     $query->where('category_id', $category_id);
+        // })->with('categories')->paginate(5);
+
+        $books = Category::findOrFail($category_id)->books()->paginate(5);
+
+        // dd($books->links('pagination::bootstrap-5'));
 
         $nama = Category::findOrFail($category_id)->category;
         return view('home',[

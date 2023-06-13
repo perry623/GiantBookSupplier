@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Publisher;
 use Faker\Factory as Faker;
+
+
 use Illuminate\Database\Seeder;
-
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -29,7 +30,7 @@ class PublisherSeeder extends Seeder
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8YXydf_BRwVKFkGp3osZysBJ84C5e72vy-ZtPqM8BPJ1Rm46Crw78Xl46awOqQWgGmuc&usqp=CAU',
                 ];
         for($i=1; $i <=$this::$PUBLISHER_COUNT; $i++){
-            DB::table('publishers')->insert(
+            Publisher::create(
                 ['name'=> $faker->company,
                 'phone'=>$faker->phoneNumber,
                 'email'=> $faker ->email,

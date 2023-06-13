@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Book as ModelBuku;
 use Faker\Factory as Faker;
+
+
 use Illuminate\Database\Seeder;
-
-
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use Database\Seeders\PublisherSeeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class BookSeeder extends Seeder
 {
@@ -38,7 +39,7 @@ class BookSeeder extends Seeder
         ];
         
         for($i=1; $i <=$this::$BOOK_COUNT; $i++){
-            DB::table('books')->insert(
+            ModelBuku::create(
                 ['title'=> $summary->realText($maxNbChars = 20, $indexSize = 2),
                 'author'=> $faker->name,
                 'year'=> $faker->date('Y'),

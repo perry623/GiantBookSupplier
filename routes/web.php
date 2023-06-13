@@ -21,5 +21,8 @@ Route::controller(BookController::class)->group(function () {
         Route::get('/publishers', 'showPublisher');
         Route::get('/publisher/{id}', 'showPublisherDetails');
         Route::get('/contact', 'contact');
+        Route::get('/CRUD', 'CRUD_view');
+        Route::post('/CRUDpost', 'CRUD_pro')->name("upload");
+
 
     });
